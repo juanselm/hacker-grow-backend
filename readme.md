@@ -27,5 +27,8 @@ Para ejecutar el backend del proyecto necesitas tener instalados los siguientes 
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu_usuario/hacker-grow-backend.git
+git clone https://github.com/juanselm/hacker-grow-backend.git
 cd hacker-grow-backend
+```
+
+Este `README.md` cubre las principales áreas de información necesarias para tu proyecto backend de **Hacker Grow**. Asegúrate de actualizar cualquier detalle específico que dependa de tu implementación o configuración particular.
