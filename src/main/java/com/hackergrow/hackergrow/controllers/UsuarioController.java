@@ -1,8 +1,10 @@
 package com.hackergrow.hackergrow.controllers;
 
 import com.hackergrow.hackergrow.entities.Usuario;
+import com.hackergrow.hackergrow.exceptions.UsuarioExistenteException;
 import com.hackergrow.hackergrow.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +17,11 @@ public class UsuarioController {
 
     @PostMapping("/sign-in")
     public ResponseEntity<Usuario> registrarUsuario(@RequestBody Usuario usuario) {
-        Usuario nuevoUsuario = usuarioService.registrarUsuario(usuario);
-        return ResponseEntity.ok(nuevoUsuario);
+        try {
+            Usuario nuevoUsuario = usuarioService.registrarUsuario(usuario);
+            return ResponseEntity.ok(nuevoUsuario);
+        } catch (UsuarioExistenteException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+        }
     }
 }
