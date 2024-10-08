@@ -22,15 +22,19 @@ public class Usuario {
     @Column(name = "fecha_registro", nullable = false)
     private LocalDateTime fechaRegistro;
 
+    @Column(name = "nombre_de_usuario", length = 100, nullable = false)
+    private String nombreDeUsuario;
+
     // Default constructor
     public Usuario() {}
 
     // Parameterized constructor
-    public Usuario(String nombre, String correo, String contrasena, LocalDateTime fechaRegistro) {
+    public Usuario(String nombre, String correo, String contrasena, LocalDateTime fechaRegistro, String nombreDeUsuario) {
         this.nombre = nombre;
         this.correo = correo;
         this.contrasena = contrasena;
         this.fechaRegistro = fechaRegistro;
+        this.nombreDeUsuario = nombreDeUsuario;
     }
 
     // Getters and Setters
@@ -72,5 +76,13 @@ public class Usuario {
 
     public void setFechaRegistro(LocalDateTime fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public String getNombreDeUsuario() {
+        return nombreDeUsuario;
+    }
+
+    public void setNombreDeUsuario(String nombreDeUsuario) {
+        this.nombreDeUsuario = nombreDeUsuario;
     }
 }
