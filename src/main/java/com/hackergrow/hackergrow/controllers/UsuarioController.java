@@ -24,4 +24,15 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         }
     }
+
+    
+    @PostMapping("/login")
+    public ResponseEntity<Usuario> loginUsuario(@RequestBody Usuario usuario) {
+        try {
+            Usuario usuarioLogueado = usuarioService.loginUsuario(usuario.getCorreo(), usuario.getContrasena());
+            return ResponseEntity.ok(usuarioLogueado);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+    }
 }

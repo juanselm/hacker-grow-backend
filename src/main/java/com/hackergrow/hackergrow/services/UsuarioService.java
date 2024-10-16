@@ -31,4 +31,14 @@ public class UsuarioService {
         usuario.setFechaRegistro(LocalDateTime.now());
         return usuarioRepository.save(usuario);
     }
+
+
+    public Usuario loginUsuario(String email, String password) {
+        Optional<Usuario> usuario = usuarioRepository.findByCorreoAndContrasena(email, password);
+        if (usuario.isPresent()) {
+            return usuario.get();
+        } else {
+            throw new RuntimeException("Correo o contraseña incorrectos.");
+        }
+    }
 }
