@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RetoService {
@@ -15,5 +16,9 @@ public class RetoService {
 
     public List<Reto> obtenerTodosLosRetos() {
         return retoRepository.findAll();
+    }
+
+    public Optional<Reto> obtenerRetoPorId(Long id) {
+        return retoRepository.findById(id);
     }
 }
