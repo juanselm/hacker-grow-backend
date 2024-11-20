@@ -22,8 +22,8 @@ public class Reto {
     @Column(name = "nivel_dificultad", nullable = false)
     private NivelDificultadEnum nivelDificultad;
 
-    @Column(name = "ruta_solucion", length = 255, nullable = true)
-    private String rutaSolucion;
+    @Column(name = "hash_solucion", length = 30, nullable = false)
+    private String hashSolucion;
 
     @Column(name = "url_recurso", length = 325, nullable = true)
     private String urlRecurso;
@@ -36,11 +36,11 @@ public class Reto {
     public Reto() {}
 
     // Parameterized constructor
-    public Reto(String nombreReto, String descripcion, NivelDificultadEnum nivelDificultad, String rutaSolucion, String urlRecurso, EstadoEnum estado) {
+    public Reto(String nombreReto, String descripcion, NivelDificultadEnum nivelDificultad, String hashSolucion, String urlRecurso, EstadoEnum estado) {
         this.nombreReto = nombreReto;
         this.descripcion = descripcion;
         this.nivelDificultad = nivelDificultad;
-        this.rutaSolucion = rutaSolucion;
+        this.hashSolucion = hashSolucion;
         this.urlRecurso = urlRecurso;
         this.estado = estado;
     }
@@ -78,12 +78,12 @@ public class Reto {
         this.nivelDificultad = nivelDificultad;
     }
 
-    public String getRutaSolucion() {
-        return rutaSolucion;
+    public String getHashSolucion() {
+        return hashSolucion;
     }
 
-    public void setRutaSolucion(String rutaSolucion) {
-        this.rutaSolucion = rutaSolucion;
+    public void setHashSolucion(String hashSolucion) {
+        this.hashSolucion = hashSolucion;
     }
 
     public String getUrlRecurso() {
