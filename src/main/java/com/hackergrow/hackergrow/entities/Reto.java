@@ -22,8 +22,8 @@ public class Reto {
     @Column(name = "nivel_dificultad", nullable = false)
     private NivelDificultadEnum nivelDificultad;
 
-    @Column(name = "hash_solucion", length = 30, nullable = false)
-    private String hashSolucion;
+    @Column(name = "ruta_solucion", length = 255, nullable = true)
+    private String rutaSolucion;
 
     @Column(name = "url_recurso", length = 325, nullable = true)
     private String urlRecurso;
@@ -32,17 +32,21 @@ public class Reto {
     @Column(name = "estado", nullable = false)
     private EstadoEnum estado;
 
+    @Column(name = "categoria", length = 100, nullable = false)
+    private String categoria;
+
     // Default constructor
     public Reto() {}
 
     // Parameterized constructor
-    public Reto(String nombreReto, String descripcion, NivelDificultadEnum nivelDificultad, String hashSolucion, String urlRecurso, EstadoEnum estado) {
+    public Reto(String nombreReto, String descripcion, NivelDificultadEnum nivelDificultad, String rutaSolucion, String urlRecurso, EstadoEnum estado, String categoria) {
         this.nombreReto = nombreReto;
         this.descripcion = descripcion;
         this.nivelDificultad = nivelDificultad;
-        this.hashSolucion = hashSolucion;
+        this.rutaSolucion = rutaSolucion;
         this.urlRecurso = urlRecurso;
         this.estado = estado;
+        this.categoria = categoria;
     }
 
     // Getters and Setters
@@ -78,12 +82,12 @@ public class Reto {
         this.nivelDificultad = nivelDificultad;
     }
 
-    public String getHashSolucion() {
-        return hashSolucion;
+    public String getRutaSolucion() {
+        return rutaSolucion;
     }
 
-    public void setHashSolucion(String hashSolucion) {
-        this.hashSolucion = hashSolucion;
+    public void setRutaSolucion(String rutaSolucion) {
+        this.rutaSolucion = rutaSolucion;
     }
 
     public String getUrlRecurso() {
@@ -100,5 +104,13 @@ public class Reto {
 
     public void setEstado(EstadoEnum estado) {
         this.estado = estado;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }
