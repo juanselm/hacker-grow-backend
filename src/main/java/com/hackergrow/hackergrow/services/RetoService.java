@@ -21,4 +21,8 @@ public class RetoService {
     public Optional<Reto> obtenerRetoPorId(Long id) {
         return retoRepository.findById(id);
     }
+
+    public List<Reto> obtenerRetosPorCategoria(String categoria) {
+        return retoRepository.findByCategoria(categoria);
+    }
 }

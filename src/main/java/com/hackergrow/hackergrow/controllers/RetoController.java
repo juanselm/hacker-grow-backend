@@ -27,4 +27,10 @@ public class RetoController {
         Optional<Reto> reto = retoService.obtenerRetoPorId(id);
         return reto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/categoria/{categoria}")
+    public ResponseEntity<List<Reto>> listarRetosPorCategoria(@PathVariable String categoria) {
+        List<Reto> retos = retoService.obtenerRetosPorCategoria(categoria);
+        return ResponseEntity.ok(retos);
+    }
 }
