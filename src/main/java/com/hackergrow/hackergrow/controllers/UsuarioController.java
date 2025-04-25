@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/users")
 public class UsuarioController {
-
     @Autowired
     private UsuarioService usuarioService;
 
@@ -25,7 +24,6 @@ public class UsuarioController {
         }
     }
 
-    
     @PostMapping("/login")
     public ResponseEntity<Usuario> loginUsuario(@RequestBody Usuario usuario) {
         try {

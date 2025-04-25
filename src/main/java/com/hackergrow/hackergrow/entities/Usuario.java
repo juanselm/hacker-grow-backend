@@ -25,6 +25,9 @@ public class Usuario {
     @Column(name = "nombre_de_usuario", length = 100, nullable = false)
     private String nombreDeUsuario;
 
+    @Column(name = "id_avatar", nullable = true)
+    private Long idAvatar;
+
     // Default constructor
     public Usuario() {}
 
@@ -84,5 +87,13 @@ public class Usuario {
 
     public void setNombreDeUsuario(String nombreDeUsuario) {
         this.nombreDeUsuario = nombreDeUsuario;
+    }
+
+    public Long getIdAvatar() {
+        return idAvatar;
+    }
+
+    public void setIdAvatar(Long idAvatar) {
+        this.idAvatar = idAvatar;
     }
 }

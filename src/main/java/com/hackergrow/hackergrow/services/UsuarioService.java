@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @Service
 public class UsuarioService {
-
     @Autowired
     private UsuarioRepository usuarioRepository;
 
@@ -29,6 +28,9 @@ public class UsuarioService {
         }
 
         usuario.setFechaRegistro(LocalDateTime.now());
+        if (usuario.getIdAvatar() == null) {
+            usuario.setIdAvatar(1L); // Set a default avatar ID if not provided
+        }
         return usuarioRepository.save(usuario);
     }
 
