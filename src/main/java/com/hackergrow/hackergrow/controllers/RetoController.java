@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -32,5 +33,11 @@ public class RetoController {
     public ResponseEntity<List<Reto>> listarRetosPorCategoria(@PathVariable String categoria) {
         List<Reto> retos = retoService.obtenerRetosPorCategoria(categoria);
         return ResponseEntity.ok(retos);
+    }
+
+    @GetMapping("/count-by-category")
+    public ResponseEntity<Map<String, Long>> contarRetosPorCategoria() {
+        Map<String, Long> conteoPorCategoria = retoService.contarRetosPorCategoria();
+        return ResponseEntity.ok(conteoPorCategoria);
     }
 }

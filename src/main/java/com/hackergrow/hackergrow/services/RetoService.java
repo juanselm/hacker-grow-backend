@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RetoService {
@@ -24,5 +26,10 @@ public class RetoService {
 
     public List<Reto> obtenerRetosPorCategoria(String categoria) {
         return retoRepository.findByCategoria(categoria);
+    }
+
+    public Map<String, Long> contarRetosPorCategoria() {
+        return retoRepository.findAll().stream()
+                .collect(Collectors.groupingBy(Reto::getCategoria, Collectors.counting()));
     }
 }
