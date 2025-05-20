@@ -3,7 +3,7 @@ package com.hackergrow.hackergrow.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "avatars")
+@Table(name = "avatares")
 public class Avatar {
 
     @Id

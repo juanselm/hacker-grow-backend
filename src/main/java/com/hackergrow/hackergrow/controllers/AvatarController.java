@@ -17,7 +17,9 @@ public class AvatarController {
 
     @GetMapping("/avatars")
     public ResponseEntity<List<Avatar>> listarAvatares() {
+        System.out.println("Entrando a listarAvatares");
         List<Avatar> avatars = avatarService.obtenerTodosLosAvatares();
+        System.out.println("Avatares obtenidos: " + avatars.size());
         if (avatars.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
