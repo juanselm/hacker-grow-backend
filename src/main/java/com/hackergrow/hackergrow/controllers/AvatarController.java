@@ -25,4 +25,23 @@ public class AvatarController {
         }
         return ResponseEntity.ok(avatars);
     }
+
+    @GetMapping("/avatars/{avatarId}")
+    public ResponseEntity<Avatar> obtenerAvatarPorId(@PathVariable Long avatarId) {
+        return avatarService.obtenerAvatarPorId(avatarId)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/users/{userId}/avatar/{avatarId}")
+    public ResponseEntity<String> actualizarAvatarUsuario(
+            @PathVariable Long userId,
+            @PathVariable Long avatarId) {
+        boolean actualizado = avatarService.actualizarAvatarDeUsuario(userId, avatarId);
+        if (actualizado) {
+            return ResponseEntity.ok("Avatar actualizado correctamente.");
+        } else {
+            return ResponseEntity.badRequest().body("No se pudo actualizar el avatar.");
+        }
+    }
 }
