@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.stream.Collectors;
+import java.util.Map;
 
 @Service
 public class ProgresoUsuarioService {
@@ -38,8 +39,15 @@ public class ProgresoUsuarioService {
                 .stream()
                 .filter(pu -> pu.getEstadoReto() == EstadoRetoEnum.completado && pu.getFechaFinalizacion() != null)
                 .collect(Collectors.toList());
-            int retosCompletados = completados.size();
-            java.time.LocalDateTime fechaUltimaSolucion = completados.stream()
+            // Agrupar por idReto y tomar solo el primer intento (por fechaFinalizacion más temprana)
+            Map<Long, ProgresoUsuario> primerIntentoPorReto = completados.stream()
+                .collect(Collectors.toMap(
+                    pu -> pu.getReto().getIdReto(),
+                    pu -> pu,
+                    (pu1, pu2) -> pu1.getFechaFinalizacion().isBefore(pu2.getFechaFinalizacion()) ? pu1 : pu2
+                ));
+            int retosCompletados = primerIntentoPorReto.size();
+            java.time.LocalDateTime fechaUltimaSolucion = primerIntentoPorReto.values().stream()
                 .map(ProgresoUsuario::getFechaFinalizacion)
                 .min(Comparator.naturalOrder())
                 .orElse(null);
