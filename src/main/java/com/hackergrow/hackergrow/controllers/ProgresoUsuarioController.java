@@ -1,5 +1,6 @@
 package com.hackergrow.hackergrow.controllers;
 
+import com.hackergrow.hackergrow.dto.UsuarioRankingDTO;
 import com.hackergrow.hackergrow.entities.ProgresoUsuario;
 import com.hackergrow.hackergrow.services.ProgresoUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,11 @@ public class ProgresoUsuarioController {
     public ResponseEntity<List<ProgresoUsuario>> obtenerEstadoRetosPorUsuario(@PathVariable Long idUsuario) {
         List<ProgresoUsuario> progresoUsuarios = progresoUsuarioService.obtenerEstadoRetosPorUsuario(idUsuario);
         return ResponseEntity.ok(progresoUsuarios);
+    }
+
+    @GetMapping("/ranking-usuarios")
+    public ResponseEntity<List<UsuarioRankingDTO>> rankingUsuariosPorRetos() {
+        List<UsuarioRankingDTO> ranking = progresoUsuarioService.obtenerRankingUsuariosPorRetos();
+        return ResponseEntity.ok(ranking);
     }
 }
